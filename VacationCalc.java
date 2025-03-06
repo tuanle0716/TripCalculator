@@ -82,6 +82,8 @@ public class VacationCalc extends JFrame implements ActionListener {
             // Calculate costs
             double carTotal = carRental * nights;
             double houseTotal = houseRental * nights;
+            double carPerPerson = carRental * nights / people;
+            double housePerPerson = houseRental * nights / people;
             double subtotal = carTotal + houseTotal;
             double tax = subtotal * stateTaxRate;
             double total = subtotal + tax;
@@ -91,12 +93,14 @@ public class VacationCalc extends JFrame implements ActionListener {
             String message = String.format(
                 "State: %s%n" +
                 "Car Rental Total: $%.2f%n" +
+                "Car Rental per person: %.2f%n" + 
+                "House Rental per person: %.2f%n" +
                 "House Rental Total: $%.2f%n" +
                 "Subtotal: $%.2f%n" +
                 "Tax: $%.2f%n" +
                 "Total: $%.2f%n" +
                 "Cost Per Person: $%.2f",
-                state, carTotal, houseTotal, subtotal, tax, total, perPerson
+                state, carTotal, carPerPerson, houseTotal, housePerPerson, subtotal, tax, total, perPerson
             );
             
             // Display the result in a dialog
